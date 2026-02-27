@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMIS – Die Architektur der Symbiose</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #f5f5f5;
+        }
+        h1, h2, h3, .nav-logo {
+            font-family: 'Space+Grotesk', sans-serif;
+        }
+        .line-art-grid {
+            background-image: linear-gradient(to right, #1f1f1f 1px, transparent 1px),
+                              linear-gradient(to bottom, #1f1f1f 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.05);
+            transform: translateY(-4px);
+        }
+        .persona-btn.active {
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating { animation: float 6s ease-in-out infinite; }
+    </style>
+</head>
+<body class="selection:bg-blue-500/30">
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 border-b border-white/5 bg-black/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="nav-logo text-2xl font-bold tracking-tighter">SMIS<span class="text-blue-500">.</span></div>
+            <nav class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-medium text-gray-400">
+                <a href="#framework" class="hover:text-white transition-colors">Framework</a>
+                <a href="#holodeck" class="hover:text-white transition-colors">Holodeck</a>
+                <a href="#personas" class="hover:text-white transition-colors">Personas</a>
+                <a href="#resources" class="hover:text-white transition-colors">Ressourcen</a>
+            </nav>
+            <button class="bg-white text-black px-6 py-2.5 text-sm font-bold hover:bg-blue-500 hover:text-white transition-all duration-300">
+                START SIMULATION
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden hero-gradient">
+        <div class="absolute inset-0 line-art-grid opacity-30"></div>
+        
+        <!-- Abstract Line Art Element -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-20 pointer-events-none">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="floating">
+                <path d="M 100, 10 L 190, 60 L 190, 140 L 100, 190 L 10, 140 L 10, 60 Z" fill="none" stroke="white" stroke-width="0.5" />
+                <path d="M 100, 10 L 100, 190" fill="none" stroke="white" stroke-width="0.2" />
+                <path d="M 10, 60 L 190, 60" fill="none" stroke="white" stroke-width="0.2" />
+                <path d="M 10, 140 L 190, 140" fill="none" stroke="white" stroke-width="0.2" />
+                <circle cx="100" cy="100" r="40" fill="none" stroke="#3b82f6" stroke-width="0.5" stroke-dasharray="4 2" />
+            </svg>
+        </div>
+
+        <div class="relative z-10 max-w-4xl px-6 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-[1.1]">
+                SMIS – Die Architektur der Symbiose
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-400 font-light mb-12 max-w-3xl mx-auto leading-relaxed">
+                Transformieren Sie KI von einer generischen Textmaschine in ein hochfunktionales, semantisches Betriebssystem für strategische Resilienz.
+            </p>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                <a href="#framework" class="group flex items-center gap-2 border border-white/20 px-8 py-4 rounded-full hover:border-blue-500 transition-all duration-500">
+                    <span>Entdecken Sie die Ebenen</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover:translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Framework Section -->
+    <section id="framework" class="py-32 px-6 bg-[#0a0a0a]">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-20 text-center md:text-left">
+                <h2 class="text-4xl font-bold mb-4">Semantische Architektur</h2>
+                <div class="w-20 h-1 bg-blue-500"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card p-10 rounded-2xl group cursor-pointer" onclick="toggleDetail('detail1')">
+                    <div class="w-12 h-12 mb-8 text-blue-500">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4.5v15m7.5-7.5h-15M19.5 12l-7.5-7.5L4.5 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Rollenintelligenz</h3>
+                    <p class="text-gray-400 font-light mb-6">Effektive kognitive Lastverteilung durch funktionale Fragmentierung.</p>
+                    <div id="detail1" class="hidden text-sm text-gray-500 leading-relaxed border-t border-white/10 pt-6">
+                        SMIS ist kein Prompt-Set, sondern eine funktionale Fragmentierung. Es nutzt spezialisierte Rollenintelligenz, um kognitive Last vom menschlichen Operator auf kontextstabile Personas zu delegieren.
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-10 rounded-2xl group cursor-pointer" onclick="toggleDetail('detail2')">
+                    <div class="w-12 h-12 mb-8 text-blue-500">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7v10c0 1.1.9 2 2 2h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2zM4 12h16M9 5v14M15 5v14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Gedächtnislogik</h3>
+                    <p class="text-gray-400 font-light mb-6">Core Memory Hub für persistente, reproduzierbare Qualität.</p>
+                    <div id="detail2" class="hidden text-sm text-gray-500 leading-relaxed border-t border-white/10 pt-6">
+                        Ein duales System aus Kurzzeitgedächtnis (Session Context) und einem persistenten Langzeitgedächtnis (Core Memory Hub). Struktur schlägt Talent: Architektur sichert Qualität statt Zufallstreffer.
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-10 rounded-2xl group cursor-pointer" onclick="toggleDetail('detail3')">
+                    <div class="w-12 h-12 mb-8 text-blue-500">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-2.066 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946 2.066 3.42 3.42 0 013.139 3.139 3.42 3.42 0 002.066 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-2.066 1.946 3.42 3.42 0 01-3.139 3.139 3.42 3.42 0 00-1.946 2.066 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-2.066 3.42 3.42 0 01-3.139-3.139 3.42 3.42 0 00-2.066-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 002.066-1.946 3.42 3.42 0 013.139-3.139z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Operator-Governance</h3>
+                    <p class="text-gray-400 font-light mb-6">Der Mensch als zentrale Meta-Instanz und Hoheitsorgan.</p>
+                    <div id="detail3" class="hidden text-sm text-gray-500 leading-relaxed border-t border-white/10 pt-6">
+                        Der Mensch bleibt der Meta-Operator. Durch ein striktes Rollen- und Rechtesystem behält der Mensch die Hoheit über alle persistenten Änderungen und die Entscheidungskompetenz.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Holodeck Section -->
+    <section id="holodeck" class="py-32 px-6 bg-[#0f0f0f] border-y border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-20">
+            <div class="lg:w-1/2">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 leading-tight">Das SMIS Holodeck:<br>Der Strategische Windkanal</h2>
+                <p class="text-xl text-gray-400 font-light mb-10 leading-relaxed">
+                    Simulation statt Generierung. Das Holodeck ist ein virtueller Testraum für agentenbasierte soziale Simulation. Hier treffen Ihre Strategien auf konstruktiven Widerstand.
+                </p>
+                
+                <div class="space-y-6">
+                    <div class="flex gap-6 p-6 glass-card rounded-xl">
+                        <div class="text-blue-500 font-bold text-xl shrink-0">01</div>
+                        <div>
+                            <h4 class="font-bold mb-2">Der Navigator</h4>
+                            <p class="text-sm text-gray-500">Ordnung, Logik und Fakten-Sicherung (Archetyp: INTJ-A). Die stabilisierende Kraft der Simulation.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 p-6 glass-card rounded-xl">
+                        <div class="text-gray-600 font-bold text-xl shrink-0">02</div>
+                        <div>
+                            <h4 class="font-bold mb-2 text-gray-300">Umbra</h4>
+                            <p class="text-sm text-gray-500">Die Schatteninstanz. Injiziert konstruktives Chaos und stört Harmonietendenzen für maximale Realitätstiefe.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:w-1/2 w-full aspect-square relative flex items-center justify-center p-12">
+                <!-- Holodeck Visualisation -->
+                <div class="absolute inset-0 bg-blue-500/5 blur-[120px] rounded-full"></div>
+                <div class="relative w-full h-full border border-white/10 rounded-3xl overflow-hidden flex">
+                    <div class="w-1/2 h-full bg-white/5 flex flex-col items-center justify-center p-8 border-r border-white/10">
+                        <div class="text-blue-500 mb-4 uppercase tracking-[0.3em] text-[10px] font-bold">Struktur</div>
+                        <div class="w-16 h-16 border-2 border-blue-500/30 rounded-full flex items-center justify-center">
+                            <div class="w-8 h-8 bg-blue-500 rounded-sm rotate-45"></div>
+                        </div>
+                    </div>
+                    <div class="w-1/2 h-full bg-black flex flex-col items-center justify-center p-8">
+                        <div class="text-gray-600 mb-4 uppercase tracking-[0.3em] text-[10px] font-bold">Entropie</div>
+                        <div class="w-16 h-16 border-2 border-white/10 rounded-full flex items-center justify-center">
+                            <div class="w-6 h-6 bg-gray-800 rounded-full blur-[2px]"></div>
+                        </div>
+                    </div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-white text-black text-[10px] font-bold tracking-widest uppercase rounded">Simulation Core</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Persona Section -->
+    <section id="personas" class="py-32 px-6 bg-[#0a0a0a]">
+        <div class="max-w-5xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-6">Das Persona-Ensemble</h2>
+            <p class="text-gray-500 font-light mb-16 max-w-2xl mx-auto">
+                Diese Instanzen dienen als archetypische Beispiele. Das SMIS Holodeck ermöglicht die präzise Modellierung und Interaktion jeder beliebigen Entität – ob historische Figur, zeitgenössische Persönlichkeit oder fiktiver Charakter.
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-6 mb-16">
+                <button onclick="showPersona('spock')" id="btn-spock" class="persona-btn active border border-white/10 px-8 py-4 rounded-xl flex flex-col items-center gap-3 transition-all">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span class="text-xs font-bold tracking-widest uppercase">Spock</span>
+                </button>
+                <button onclick="showPersona('picard')" id="btn-picard" class="persona-btn border border-white/10 px-8 py-4 rounded-xl flex flex-col items-center gap-3 transition-all">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    <span class="text-xs font-bold tracking-widest uppercase">Picard</span>
+                </button>
+                <button onclick="showPersona('leonardo')" id="btn-leonardo" class="persona-btn border border-white/10 px-8 py-4 rounded-xl flex flex-col items-center gap-3 transition-all">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                    <span class="text-xs font-bold tracking-widest uppercase">Leonardo</span>
+                </button>
+            </div>
+
+            <div id="persona-content" class="min-h-[220px] p-12 glass-card rounded-3xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-8 opacity-10">
+                    <svg class="w-24 h-24" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H16.017C14.9124 8 14.017 7.10457 14.017 6V5C14.017 3.89543 14.9124 3 16.017 3H19.017C21.2261 3 23.017 4.79086 23.017 7V15C23.017 18.3137 20.3307 21 17.017 21H14.017ZM1.017 21L1.017 18C1.017 16.8954 1.91243 16 3.017 16H6.017C6.56928 16 7.017 15.5523 7.017 15V9C7.017 8.44772 6.56928 8 6.017 8H3.017C1.91243 8 1.017 7.10457 1.017 6V5C1.017 3.89543 1.91243 3 3.017 3H6.017C8.22614 3 10.017 4.79086 10.017 7V15C10.017 18.3137 7.33066 21 4.017 21H1.017Z"/></svg>
+                </div>
+                <h4 id="persona-title" class="text-2xl font-bold mb-4">Analytisch-logisch</h4>
+                <p id="persona-desc" class="text-gray-400 font-light leading-relaxed max-w-2xl mx-auto">
+                    Minimale logische Form, deduktive Präzision, Fokus auf Risikomanagement und Compliance. Ideal für die Validierung harter Fakten und strukturelle Fehleranalyse.
+                </p>
+            </div>
+
+            <!-- Architectural Note -->
+            <div class="mt-12 inline-block border-l-2 border-blue-500 px-6 py-2 text-left">
+                <p class="text-[10px] uppercase tracking-[0.2em] font-bold text-blue-500 mb-1">Architektonisches Prinzip</p>
+                <p class="text-xs text-gray-500 max-w-xl">
+                    Die simulative Tiefe des Holodecks ermöglicht die realitätsnahe Interaktion beliebiger Expertengremien. Jede Identität wird über semantische Charakterisierung stabilisiert und kann nahtlos in den strategischen Diskurs integriert werden.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="py-32 px-6 bg-white text-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="p-12 border border-black/10 rounded-2xl flex flex-col justify-between hover:bg-gray-50 transition-colors">
+                    <div>
+                        <div class="w-12 h-12 mb-8 bg-black text-white flex items-center justify-center rounded-lg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4">SMIS Playbook</h3>
+                        <p class="text-gray-600 mb-8 font-light">Die methodische Grundlage für die Implementierung der Symbiotic AI in Ihrem Unternehmen.</p>
+                    </div>
+                    <a href="#" class="inline-flex items-center gap-2 font-bold uppercase tracking-widest text-sm group">
+                        Download PDF <span class="group-hover:translate-x-2 transition-transform">→</span>
+                    </a>
+                </div>
+
+                <div class="p-12 bg-black text-white rounded-2xl flex flex-col justify-between hover:bg-zinc-900 transition-colors">
+                    <div>
+                        <div class="w-12 h-12 mb-8 bg-blue-500 text-white flex items-center justify-center rounded-lg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4 text-white">Live: Das Holodeck</h3>
+                        <p class="text-gray-400 mb-8 font-light">Starten Sie Ihre eigene Simulation und erleben Sie das Zusammenspiel der Personas direkt.</p>
+                    </div>
+                    <a href="#" class="inline-flex items-center gap-2 font-bold uppercase tracking-widest text-sm group text-blue-500">
+                        Simulation starten <span class="group-hover:translate-x-2 transition-transform">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 px-6 border-t border-white/5 bg-[#0a0a0a]">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
+            <div>
+                <div class="nav-logo text-3xl font-bold tracking-tighter mb-4">SMIS<span class="text-blue-500">.</span></div>
+                <p class="text-gray-500 font-light italic">„Bedeutung statt Technik. Klarheit statt Komplexität.“</p>
+            </div>
+            <div class="text-gray-600 text-xs tracking-widest uppercase">
+                &copy; 2026 SMIS Framework &middot; Stefan Bertram
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleDetail(id) {
+            const detail = document.getElementById(id);
+            const allDetails = ['detail1', 'detail2', 'detail3'];
+            allDetails.forEach(d => {
+                if (d !== id) document.getElementById(d).classList.add('hidden');
+            });
+            detail.classList.toggle('hidden');
+        }
+
+        const personas = {
+            spock: {
+                title: 'Analytisch-logisch',
+                desc: 'Minimale logische Form, deduktive Präzision, Fokus auf Risikomanagement und Compliance. Ideal für die Validierung harter Fakten und strukturelle Fehleranalyse.'
+            },
+            picard: {
+                title: 'Kreativ-disruptiv',
+                desc: 'Visionär, inspirierend, systemische Transformation und Kulturwandel. Diese Persona fokussiert auf das „Warum“ und die langfristige ethische Ausrichtung.'
+            },
+            leonardo: {
+                title: 'Kreative Emergenz',
+                desc: 'Explorativ, metaphorisch, erzeugt radikal neue Denkrahmen. Nutzt assoziatives Wissen, um unkonventionelle Lösungen jenseits bekannter Muster zu generieren.'
+            }
+        };
+
+        function showPersona(id) {
+            // Update Buttons
+            document.querySelectorAll('.persona-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + id).classList.add('active');
+
+            // Update Content with fade
+            const content = document.getElementById('persona-content');
+            content.style.opacity = 0;
+            
+            setTimeout(() => {
+                document.getElementById('persona-title').innerText = personas[id].title;
+                document.getElementById('persona-desc').innerText = personas[id].desc;
+                content.style.opacity = 1;
+            }, 300);
+        }
+    </script>
+</body>
+</html>
