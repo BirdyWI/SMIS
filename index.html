@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Safe Mode: Verhindert Indexierung durch Suchmaschinen während der Testphase -->
+    <meta name="robots" content="noindex, nofollow">
     <title>SMIS – Die Architektur der Symbiose</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
@@ -44,6 +46,12 @@
             100% { transform: translateY(0px); }
         }
         .floating { animation: float 6s ease-in-out infinite; }
+        
+        /* Modal Style */
+        #legal-modal {
+            display: none;
+            backdrop-filter: blur(10px);
+        }
     </style>
 </head>
 <body class="selection:bg-blue-500/30">
@@ -68,7 +76,6 @@
     <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden hero-gradient">
         <div class="absolute inset-0 line-art-grid opacity-30"></div>
         
-        <!-- Abstract Line Art Element -->
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-20 pointer-events-none">
             <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="floating">
                 <path d="M 100, 10 L 190, 60 L 190, 140 L 100, 190 L 10, 140 L 10, 60 Z" fill="none" stroke="white" stroke-width="0.5" />
@@ -173,7 +180,6 @@
             </div>
 
             <div class="lg:w-1/2 w-full aspect-square relative flex items-center justify-center p-12">
-                <!-- Holodeck Visualisation -->
                 <div class="absolute inset-0 bg-blue-500/5 blur-[120px] rounded-full"></div>
                 <div class="relative w-full h-full border border-white/10 rounded-3xl overflow-hidden flex">
                     <div class="w-1/2 h-full bg-white/5 flex flex-col items-center justify-center p-8 border-r border-white/10">
@@ -227,7 +233,6 @@
                 </p>
             </div>
 
-            <!-- Architectural Note -->
             <div class="mt-12 inline-block border-l-2 border-blue-500 px-6 py-2 text-left">
                 <p class="text-[10px] uppercase tracking-[0.2em] font-bold text-blue-500 mb-1">Architektonisches Prinzip</p>
                 <p class="text-xs text-gray-500 max-w-xl">
@@ -241,7 +246,6 @@
     <section id="resources" class="py-32 px-6 bg-white text-black">
         <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-2 gap-12">
-                <!-- Playbook Card -->
                 <div class="p-12 border border-black/10 rounded-2xl flex flex-col justify-between hover:bg-gray-50 transition-colors">
                     <div>
                         <div class="w-12 h-12 mb-8 bg-black text-white flex items-center justify-center rounded-lg">
@@ -255,7 +259,6 @@
                     </a>
                 </div>
 
-                <!-- Holodeck Card -->
                 <div class="p-12 bg-black text-white rounded-2xl flex flex-col justify-between hover:bg-zinc-900 transition-colors">
                     <div>
                         <div class="w-12 h-12 mb-8 bg-blue-500 text-white flex items-center justify-center rounded-lg">
@@ -279,11 +282,30 @@
                 <div class="nav-logo text-3xl font-bold tracking-tighter mb-4 text-white">SMIS<span class="text-blue-500">.</span></div>
                 <p class="text-gray-500 font-light italic">„Bedeutung statt Technik. Klarheit statt Komplexität.“</p>
             </div>
-            <div class="text-gray-600 text-xs tracking-widest uppercase">
-                &copy; 2026 SMIS Framework &middot; Stefan Bertram
+            <div class="flex flex-col items-center md:items-end gap-4">
+                <div class="flex gap-6 text-[10px] tracking-[0.2em] uppercase font-bold text-gray-500">
+                    <a href="javascript:void(0)" onclick="openModal('impressum')" class="hover:text-blue-500 transition-colors">Impressum</a>
+                    <a href="javascript:void(0)" onclick="openModal('datenschutz')" class="hover:text-blue-500 transition-colors">Datenschutz</a>
+                </div>
+                <div class="text-gray-600 text-xs tracking-widest uppercase">
+                    &copy; 2026 SMIS Framework &middot; Stefan Bertram
+                </div>
             </div>
         </div>
     </footer>
+
+    <!-- Legal Modal -->
+    <div id="legal-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-6">
+        <div class="absolute inset-0 bg-black/60" onclick="closeModal()"></div>
+        <div class="relative bg-zinc-900 border border-white/10 w-full max-w-2xl max-h-[80vh] overflow-y-auto p-12 rounded-3xl shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-500 hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div id="modal-body" class="prose prose-invert prose-blue max-w-none text-gray-400 font-light">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
 
     <script>
         function toggleDetail(id) {
@@ -311,19 +333,49 @@
         };
 
         function showPersona(id) {
-            // Update Buttons
             document.querySelectorAll('.persona-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById('btn-' + id).classList.add('active');
-
-            // Update Content with fade
             const content = document.getElementById('persona-content');
             content.style.opacity = 0;
-            
             setTimeout(() => {
                 document.getElementById('persona-title').innerText = personas[id].title;
                 document.getElementById('persona-desc').innerText = personas[id].desc;
                 content.style.opacity = 1;
             }, 300);
+        }
+
+        // Legal Modal Logic
+        const legalTexts = {
+            impressum: `
+                <h2 class="text-3xl font-bold text-white mb-6">Impressum</h2>
+                <p class="mb-4">Angaben gemäß § 5 TMG:</p>
+                <p class="mb-4">Stefan Bertram<br>[Straße, Hausnummer]<br>[PLZ, Stadt]</p>
+                <h3 class="text-xl font-bold text-white mt-8 mb-4">Kontakt</h3>
+                <p>E-Mail: stefan.bertram67@gmail.com</p>
+                <h3 class="text-xl font-bold text-white mt-8 mb-4">Verantwortlich für den Inhalt</h3>
+                <p>Stefan Bertram (Anschrift wie oben)</p>
+            `,
+            datenschutz: `
+                <h2 class="text-3xl font-bold text-white mb-6">Datenschutz</h2>
+                <p class="mb-6">Diese Webseite dient zu Informationszwecken bezüglich des SMIS Frameworks.</p>
+                <h3 class="text-xl font-bold text-white mb-4">1. Hosting</h3>
+                <p class="mb-6">Diese Webseite wird über GitHub Pages (GitHub Inc., USA) bereitgestellt. Bei Aufruf der Seite werden technisch notwendige Daten (z.B. Ihre IP-Adresse) an Server von GitHub übertragen. Dies ist für den Betrieb der Seite technisch erforderlich.</p>
+                <h3 class="text-xl font-bold text-white mb-4">2. Cookies & Tracking</h3>
+                <p class="mb-6">Auf dieser Webseite werden keine Cookies eingesetzt und keine Analysetools zur Verhaltensbeobachtung verwendet (Datensparsamkeit).</p>
+                <h3 class="text-xl font-bold text-white mb-4">3. Ihre Rechte</h3>
+                <p>Sie haben das Recht auf Auskunft über die Verarbeitung Ihrer Daten sowie auf Berichtigung oder Löschung, sofern dies rechtlich zulässig ist.</p>
+            `
+        };
+
+        function openModal(type) {
+            document.getElementById('modal-body').innerHTML = legalTexts[type];
+            document.getElementById('legal-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('legal-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
     </script>
 </body>
